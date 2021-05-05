@@ -1,3 +1,4 @@
+
 // Il computer deve generare 16 numeri casuali tra 1 e 100.
 // I numeri non possono essere duplicati.
 // In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
@@ -93,7 +94,6 @@ console.log(bombe);
 
 // In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 
-
 var numeroUtente;
 
 var haiPerso = false;
@@ -108,22 +108,20 @@ for(i=0; i < maxTentativi && haiPerso == false; i++){
     }
     // controllo se il numero rispetta le condizioni e non è già presente
     while(controlloNumeroInArray(numeroUtente, tentativi) || numeroUtente > intervalloDifficolta || numeroUtente < 1 || !Number.isInteger(numeroUtente));
-
     // controllo se il numero corrisponde a un numero bomba
     if(controlloNumeroInArray(numeroUtente, bombe)){
         // se corrisponde a un numero bomba
         alert("hai perso\n punti: " + tentativi.length );
         haiPerso = true;
     } else {
-        // altrimenti lo pusha nell'array tentativi / punti 
+        // lo pusha nell'array tentativi / punti 
         tentativi.push(numeroUtente);
     }
 
 }
 
 console.log("tentaivi", tentativi);
-
 // se la variabile booleana è false
 if(haiPerso == false){
-    alert("COMPLIMENTI, punti" + tentativi.length);
+    alert("COMPLIMENTI, score: " + tentativi.length);
 }

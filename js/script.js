@@ -21,7 +21,7 @@ function controlloNumeroInArray (elemento,array){
         }
         
     }
-  
+    return false;
 }
 
 // numero random
@@ -32,18 +32,19 @@ function numeroRandom(min, max) {
 
 var difficolta = parseInt(prompt("scegli una difficoltà tra queste opzioni \n 0 1 2"));
 // variabile difficoltà
-var x;
+var intervalloDifficolta;
 // switch difficoltà
 switch (difficolta) {
     case 0:
-        x = 100;
+        intervalloDifficolta = 100;
         break;
     case 1:
-        x = 80;
+        intervalloDifficolta = 80;
         break;
     case 2:
-        x = 50;
+        intervalloDifficolta = 50;
         break;
+        
     default:
         alert("non è un opzione valida");
 }
@@ -64,7 +65,7 @@ var bombaSingola;
 // Il computer deve generare 16 numeri casuali tra 1 e 100.
 
 for(i=0; i < 16; i++){
-    bombaSingola = numeroRandom(1,x);
+    bombaSingola = numeroRandom(1,intervalloDifficolta);
     
     console.log("bomba generata: ",bombaSingola, bombe.length);
     if(!controlloNumeroInArray(bombaSingola,bombe)) {
@@ -85,20 +86,21 @@ for(i=0; i < maxTentativi && haiPerso == false; i++){
 
     do {
 
-        numeroUtente = parseInt(prompt("inserisci un numero fra 1 e " +  x));
+        numeroUtente = parseInt(prompt("inserisci un numero fra 1 e " +  intervalloDifficolta));
 
     }
-    while(controlloNumeroInArray(numeroUtente, tentativi));
-
+    while(controlloNumeroInArray(numeroUtente, tentativi) || numeroUtente > intervalloDifficolta || numeroUtente < 1 || !Number.isInteger(numeroUtente));
+    
     if(controlloNumeroInArray(numeroUtente, bombe)){
-         alert("hai perso");
-         haiPerso = true;
+        alert("hai perso\n punti: " + tentativi.length );
+        haiPerso = true;
     } else {
-         tentativi.push(numeroUtente);
-    }
+        tentativi.push(numeroUtente);
+}
 
 }
 
 console.log("tentaivi", tentativi);
-
-console.log("COMPLIMENTI, punti",tentativi.length);
+if(!haiPerso){
+    alert("COMPLIMENTI, punti" + tentativi.length);
+}

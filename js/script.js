@@ -66,7 +66,7 @@ var bombe = [];
 
 // massimi tentativi
 var maxTentativi = 84;
-maxTentativi = 5;
+// maxTentativi = 5;
 
 // tentativi fatti / punti
 var tentativi = [];
@@ -92,6 +92,8 @@ for(i=0; i < 16; i++){
 console.log(bombe);
 
 // In seguito deve chiedere all'utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+
+
 var numeroUtente;
 
 var haiPerso = false;
@@ -99,7 +101,7 @@ var haiPerso = false;
 while(tentativi.length < maxTentativi && haiPerso == false){
 
     do {
-        numeroUtente = parseInt(prompt("scrivi un numero"));
+        numeroUtente = parseInt(prompt("scrivi un numero fra 1 e " + intervalloDifficolta));
     }
     
     while(numeroUtente > intervalloDifficolta || numeroUtente < 1 || !Number.isInteger(numeroUtente));
@@ -112,6 +114,30 @@ while(tentativi.length < maxTentativi && haiPerso == false){
     }
     
 }
+
+
+// for(i=0; i < maxTentativi && haiPerso == false; i++){
+
+//     // chiedi all'utente un numero almeno una volta
+//     do {
+
+//         numeroUtente = parseInt(prompt("inserisci un numero fra 1 e " +  intervalloDifficolta));
+
+//     }
+//     // controllo se il numero rispetta le condizioni e non è già presente
+//     while(controlloNumeroInArray(numeroUtente, tentativi) || numeroUtente > intervalloDifficolta || numeroUtente < 1 || !Number.isInteger(numeroUtente));
+//     // controllo se il numero non corrisponde a un numero bomba
+//     if(controlloNumeroInArray(numeroUtente, bombe)){
+//         // se corrisponde a un numero bomba
+//         alert("hai perso\n punti: " + tentativi.length );
+//         haiPerso = true;
+//     } else {
+//         // lo pusha nell'array tentativi / punti 
+//         tentativi.push(numeroUtente);
+// }
+
+// }
+
 
 console.log("tentativi", tentativi);
 // se la variabile booleana è false
